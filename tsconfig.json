@@ -1,0 +1,36 @@
+{
+	"compilerOptions": {
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"esnext"
+		],
+		"target": "es6",
+		"outDir": "js",
+		"noEmitOnError": true,
+		"noImplicitAny": true,
+		"removeComments": true,
+		"module": "commonjs",
+		"strictNullChecks": true,
+		"inlineSourceMap": true,
+		"experimentalDecorators": true,
+		"sourceMap": false,
+		"skipLibCheck": true,
+		"allowSyntheticDefaultImports": true,
+		// "types": [
+		// 	"node",
+		// ]
+	},
+	"typeRoots": [
+		"node_modules/@types"
+	],
+	"baseUrl": ".",
+	"paths": {
+		"src/*": ["src/*"]
+	},
+	"include": [
+		"src/"
+	],
+	"exclude": [
+	]
+}

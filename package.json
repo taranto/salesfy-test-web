@@ -1,0 +1,63 @@
+{
+	"name": "salesfy-test-web",
+	"version": "1.0.0",
+	"description": "Salesfy code to test the front project",
+	"repository": "https://github.com/taranto/salesfy-test-web.git",
+	"author": "Fernando Taranto - https://github.com/taranto",
+	"private": true,
+	"main": "./js/App.test.js",
+	"dependencies": {
+		"chromedriver": "2.37.0",
+		"geckodriver": "^1.16.2",
+		"jest": "^25.1.0",
+		"salesfy-shared": "file:salesfy-shared",
+		"selenium-webdriver": "3.x"
+	},
+	"devDependencies": {
+		"@types/chromedriver": "^2.38.0",
+		"@types/jest": "^24.0.15",
+		"@types/node": "^12.0.10",
+		"@types/selenium-webdriver": "^4.0.8",
+		"ts-jest": "^25.2.1",
+		"tslint": "^5.10.0",
+		"tslint-config-prettier": "^1.13.0",
+		"tslint-eslint-rules": "^5.3.1",
+		"tslint-microsoft-contrib": "^5.0.3",
+		"typescript": "^3.7.5",
+		"typescript-eslint-parser": "^15.0.0"
+	},
+	"scripts": {
+		"test": "node --inspect-brk=9229 node_modules/.bin/jest --runInBand /js/App.test.js --config jest.config.js",
+		"compile-watch": "yarn tsc --p tsconfig.json -w",
+		"compile": "yarn tsc --p tsconfig.json",
+		"tslintit": "tslint './ts/**/*.ts' ",
+		"lint": "tslint ./ts/**/*.ts -t verbose",
+		"full-reinstall": "yarn clear-project && yarn shared-refresh && npm install && yarn compile",
+		"clear-project": "rm -rf node_modules js log salesfy-shared",
+		"shared-refresh": "yarn shared-bring-uninstalled-to-root && yarn shared-uninstall-as-module && yarn shared-install && yarn shared-compile && yarn shared-install-as-module",
+		"shared-bring-uninstalled-to-root": "rm -rf ./salesfy-shared && rsync -av --progress ../salesfy-shared ./ --exclude node_modules --exclude js --exclude .git --exclude .npmrc --exclude .npmignore --exclude .gitignore",
+		"shared-install": "cd ./salesfy-shared && npm install && cd ..",
+		"shared-compile": "cd ./salesfy-shared && yarn compile-shared && cd ..",
+		"shared-install-as-module": "npm install salesfy-shared@file:./salesfy-shared --save",
+		"shared-uninstall-as-module": "npm uninstall salesfy-shared --save"
+	},
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"engines": {
+		"npm": "5.6.0",
+		"node": "9.11.2"
+	}
+}
